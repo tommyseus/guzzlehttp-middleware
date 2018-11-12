@@ -1,0 +1,17 @@
+version: '2.1'
+
+services:
+  guzzlehttp-middleware-php72: &php
+    build:
+      context: .
+    volumes:
+      - .:/project
+    tty: true
+    command: bash
+
+  guzzlehttp-middleware-php71:
+    <<: *php
+    build:
+      context: .
+      args:
+        PHP: "7.1"

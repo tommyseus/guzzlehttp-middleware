@@ -1,0 +1,57 @@
+{
+  "name": "tommyseus/guzzlehttp-middleware",
+  "type": "library",
+  "description": "The library provides several middleware classes for the guzzle http client.",
+  "license": "MIT",
+  "homepage": "https://github.com/tommyseus/guzzlehttp-middleware",
+  "authors": [
+    {
+      "name": "Tommy Seus"
+    }
+  ],
+  "keywords": [
+    "guzzle",
+    "middleware",
+    "encoding"
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "php": "^7.1",
+    "guzzlehttp/guzzle": "^6.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.13.1",
+    "jangregor/phpstan-prophecy": "^0.2.0",
+    "michaelmoussa/php-coverage-checker": "^1.1.0",
+    "phpstan/phpstan": "^0.10.5",
+    "phpstan/phpstan-phpunit": "^0.10.0",
+    "phpunit/phpunit": "^7.4.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Seus\\GuzzleHttp\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SeusTest\\GuzzleHttp\\": "tests"
+    }
+  },
+  "scripts": {
+    "check": [
+      "composer install --no-progress",
+      "@cs-check",
+      "@test-coverage-check"
+    ],
+    "cs-check": "vendor/bin/php-cs-fixer fix --diff --dry-run --verbose --ansi",
+    "cs-fix": "vendor/bin/php-cs-fixer fix --verbose --ansi",
+    "phpstan": "phpstan analyse --ansi --level=max --configuration=./phpstan.neon ./src ./tests",
+    "test": "phpunit --colors=always --coverage-clover ./coverage/clover.xml",
+    "test-coverage-check": [
+      "@test",
+      "php-coverage-checker ./coverage/clover.xml 100"
+    ]
+  }
+}
