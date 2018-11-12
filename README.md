@@ -22,7 +22,7 @@ $ composer require tommyseus/guzzlehttp-middleware
 ## Encoding Middleware
 
 The encoding middleware converts the response to the expected encoding. It will modify the body and the content-type header of the response.
-It's is possible to to add the encoding middleware to the handler stack or add it to the promise then method.
+It's possible to to add the encoding middleware to the handler stack or add it to the promise-then method.
 
 ```php
 $stack = \GuzzleHttp\HandlerStack::create();
